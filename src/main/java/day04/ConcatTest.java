@@ -1,5 +1,5 @@
 package day04;
-// Generic 泛型
+// Generic Type 泛型
 /*
 public class ConcatTest {
     private static void concat(String s1,String s2){
@@ -16,7 +16,7 @@ public class ConcatTest {
 
     public static void main(String[] args) {
 
-    String s1="Tom";
+    String s1="Tom，";
     String s2="Jerry";
     concat(s1,s2);
 
@@ -29,12 +29,12 @@ public class ConcatTest {
     concat(b1,b2);
     }
 }
-*/ public class ConcatTest<T>{
+*/ public class ConcatTest<T>{  // T：类型参数
     private void concat(T t1,T t2){
         System.out.println(String.valueOf(t1)+String.valueOf(t2));
     }
     public static void main(String[] args) {
-        String s1 = "Tom";
+        String s1 = "Tom，";
         String s2 = "Jerry";
         ConcatTest<String> c1 = new ConcatTest<>();
         c1.concat(s1, s2);
@@ -42,7 +42,7 @@ public class ConcatTest {
         int i1 = 1;
         int i2 = 2;
         ConcatTest<Integer> c2 = new ConcatTest<>();
-        c2. concat(i1, i2);
+        c2.concat(i1, i2);
 
         boolean b1 = true;
         boolean b2 = false;
