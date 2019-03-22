@@ -29,5 +29,25 @@ public class StringStringBuffer {
         }
         String alphabet=new String(chars);
         System.out.println(alphabet);
+
+/*       //String 字符串
+        long start=System.currentTimeMillis();
+        String string="";
+        for (int i = 0; i <100000 ; i++) {
+            string+=alphabet;
+        }
+        // string.length=26*100000
+        System.out.println(string.length());
+        System.out.println("total time:"+(System.currentTimeMillis()-start)/1000+" seconds.");
+*/
+        // StringBuffer 字符串缓冲区
+        long start=System.currentTimeMillis();
+        StringBuffer stringBuffer=new StringBuffer();
+        for (int i = 0; i <100000 ; i++) {
+            stringBuffer.append(alphabet);
+        }
+        System.out.println(stringBuffer.length());
+        System.out.println("total time:"+(System.currentTimeMillis()-start)+" ms.");
+
     }
 }
