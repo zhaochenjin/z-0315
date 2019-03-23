@@ -1,5 +1,5 @@
 package day03;
-// 哈希表
+// 哈希表 无序 键值对
 import java.util.Hashtable;
 import java.util.Map;
 

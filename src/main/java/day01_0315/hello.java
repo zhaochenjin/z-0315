@@ -13,8 +13,8 @@ public class hello {
         // System.out.println(w);
         int e=0xabcdef;
         System.out.println(e);
-        //char a=65536;
-        //System.out.println(a);
+        //char y=65536;
+        //System.out.println(y);
         char b =65535;
         System.out.println((int)b);
         System.out.println(b);
