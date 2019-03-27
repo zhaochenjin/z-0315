@@ -56,7 +56,7 @@ public class MysqlCommandLine {
             System.out.print(simpleDateFormat.format(new Date(end)));
             System.out.println(rowAffected + " row affected in " + (end - start) + " ms"); // 用时
         } catch (SQLException e) {
-            System.out.println("ERROR" + e.getMessage());
+            System.out.println("SQL ERROR：" + e.getMessage());
         }
     }
 
@@ -66,21 +66,31 @@ public class MysqlCommandLine {
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             ResultSetMetaData resultSetMetaData = resultSet.getMetaData(); // 元数据
-            System.out.println(resultSetMetaData.getColumnCount());            // 3
+            int columnCount = resultSetMetaData.getColumnCount();
+            for (int i = 0; i < columnCount; i++) {
+                System.out.println(resultSetMetaData.getCatalogName(1 + 1) + " ");
+            }
+            System.out.println("\n----------------");
+/*            System.out.println(resultSetMetaData.getColumnCount());            // 3
             System.out.println(resultSetMetaData.getColumnClassName(1));       // java.lang.Integer
             System.out.println(resultSetMetaData.getColumnDisplaySize(1));     // 11
             System.out.println(resultSetMetaData.getColumnLabel(1));           // id
             System.out.println(resultSetMetaData.getColumnName(1));            // id
             System.out.println(resultSetMetaData.getColumnType(1));            // 4
             System.out.println(resultSetMetaData.getColumnTypeName(1));        // INT
+  */
             while (resultSet.next()) {
-                // TODO: 2019/3/27
-                System.out.println(resultSet.getString(1) + " " + resultSet.getString(2) + " " + resultSet.getString(3));
+                for (int i = 0; i < columnCount; i++) {
+                    System.out.println(resultSet.getString(i + 1) + " ");
+                }
+                System.out.println();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-    }
+  catch (SQLException e) {
+                System.out.println("SQL ERROR:"+e.getMessage());
+                e.printStackTrace();
+  }
+        }
 
 
     public void dispatch(String sql) {
@@ -93,8 +103,13 @@ public class MysqlCommandLine {
 
     public String getSQL() {
         System.out.println("mysql> ");
-        String sql = scanner.nextLine();
-        return sql;
+        String line = scanner.nextLine();
+        StringBuilder sql=new StringBuilder(line);
+        while(!line.endsWith(";")){
+            System.out.println("   ->");
+            line=scanner.nextLine();
+            sql.append(line);
+        }return sql.toString();
     }
 
     public static void main(String[] args) {
