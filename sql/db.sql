@@ -9,9 +9,10 @@ create table db_test.user
   password varchar(255) not null comment 'password NN'
 ) comment 'user table';
 
-select *
-from db_test.user;
+
 
 show databases ;
+use db_test;
+show tables
 
-drop database db_test;
+select * from db_test.user;

@@ -5,7 +5,7 @@ import com.mysql.jdbc.Driver;
 import java.sql.*;
 
 public class JDBC {
-    private static final String URL="jdbc:mysql://127.0.0.1:3306";
+    private static final String URL="jdbc:mysql://127.0.0.1:3306?useSSL=false";
     private  static final String User="root";
     private static  final String Password="123456";
 
@@ -20,8 +20,9 @@ public class JDBC {
         PreparedStatement preparedStatement=connection.prepareStatement(sql);
         preparedStatement.setString(1,"Tom");//参数索引是从1开始计算，而不是0
         preparedStatement.setString(2,"123");
-
-        //preparedStatement.setObject(1,"zhao"); // setObject 所有类型
+        preparedStatement.setString(1,"Togrhfi");//参数索引是从1开始计算，而不是0
+        preparedStatement.setString(2,"123");
+       // preparedStatement.setObject(1,"zhao"); // setObject 所有类型
         //preparedStatement.setObject(2,"123");
         //问题1 ：同时注入两个为什么只出现一个。下面的运行问题
         //preparedStatement.setDate(3,new java.sql.Date(System.currentTimeMillis())); // 注入当前时间
