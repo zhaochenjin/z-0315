@@ -1,5 +1,6 @@
 package day08;
-
+// 访问数据库流程：
+//驱动管理器（加载JDBC驱动程序）——>连接数据库（建立数据库的连接）——>SQL语句（发送SQL查询）——>结果集（得到查询结果）
 import com.mysql.jdbc.Driver;
 
 import java.sql.*;
@@ -24,7 +25,6 @@ public class JDBC {
         preparedStatement.setString(2,"123");
        // preparedStatement.setObject(1,"zhao"); // setObject 所有类型
         //preparedStatement.setObject(2,"123");
-        //问题1 ：同时注入两个为什么只出现一个。下面的运行问题
         //preparedStatement.setDate(3,new java.sql.Date(System.currentTimeMillis())); // 注入当前时间
         //4.1.p.execteUpdate(); // DML
         preparedStatement.executeUpdate(); // 更新.执行
